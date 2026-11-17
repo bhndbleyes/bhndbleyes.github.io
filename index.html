@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Сообщение для тебя</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
-<meta name="description" content="Кое-что важное специально для тебя." />
+<meta name="description" content="Кое-что важное специально для тебя" />
 <meta property="og:title" content="Сообщение для тебя" />
 <meta property="og:image" content="assets/works/work0.jpg" />
 <meta name="theme-color" content="#ffffff" />
@@ -22,7 +22,7 @@
     display: none !important;
   }
 
-  /* "for you." ближе друг к другу */
+  /* "for you" ближе друг к другу, без точки */
   .lay--shutter {
     left: 42% !important;
     top: 45% !important;
@@ -47,7 +47,7 @@
     margin-top: 0.7em !important;
   }
 
-  /* Исправленные фотографии: теперь они не обрезаются и выглядят красиво */
+  /* Фотографии (целиком, без обрезок) */
   .confession-photos {
     position: absolute;
     inset: 0;
@@ -164,7 +164,6 @@
 <body>
 <div class="backdrop" aria-hidden="true"></div>
 
-<!-- Исправленный путь к музыке (из папки assets/audio/) -->
 <audio id="bgMusic" loop preload="auto" src="assets/audio/theme.mp3"></audio>
 
 <div class="ctl">
@@ -179,12 +178,13 @@
     <img src="assets/el/star-a.png" alt="" class="el el--star-a" aria-hidden="true" />
     <img src="assets/el/star-b.png" alt="" class="el el--star-b" aria-hidden="true" />
     <h1 class="lay lay--shutter">for</h1>
-    <p class="lay lay--kif" aria-hidden="true">you.</p>
+    <!-- Убрана точка у you -->
+    <p class="lay lay--kif" aria-hidden="true">you</p>
   </div>
   <a class="cue" href="#work" data-nav aria-label="Листать дальше"><i></i></a>
 </section>
 
-<!-- ============ 02 · 3D ЭКРАН PSP С ФОТОГРАФИЕЙ ============ -->
+<!-- ============ 02 · 3D ЭКРАН PSP С ФОТОГРАФИЯМИ ============ -->
 <section class="sec sec--light machine" id="work">
   <div class="stage" aria-hidden="true">
     <img src="assets/el/flower.png" alt="" class="el el--flower" />
@@ -193,13 +193,12 @@
     <canvas id="pspCanvas"></canvas>
     <div class="machine__loading" id="pspLoading"><i class="spin" aria-hidden="true"></i></div>
   </div>
-  <!-- Восстановлен оригинальный блок управления для работы psp.js -->
-  <div class="rail">
+  <div class="rail" style="mix-blend-mode: difference; color: #fff;">
     <span id="pspIndex">01</span><i>/</i><span id="pspTotal">01</span>
     <button class="rail__open" id="pspOpen" aria-label="Открыть фото">→</button>
   </div>
   <div class="keys">
-    <kbd>←</kbd><kbd>→</kbd><span>выбрать</span>
+    <kbd>→</kbd><kbd>←</kbd><span>листать</span>
   </div>
 </section>
 
@@ -213,10 +212,10 @@
 
     <h2 class="lay lay--abouth" style="z-index: 2;">Кое-что важное</h2>
     <div class="lay lay--bio" style="z-index: 2;">
-      <p>Санжар, ты для меня очень близкий человек, и я правда тебя безумно ценю. Мне так нравится гулять с тобой и ты умеешь поднимать мне настроение даже в самый ужасный день.</p>
+      <p>Санжар, ты для меня очень близкий человек и я правда тебя безумно ценю. Мне так нравится гулять с тобой и ты умеешь поднимать мне настроение даже в самый ужасный день.</p>
       <p>Если честно, уже привыкла к тому, что ты всегда рядом и мне совсем не хочется, чтобы это куда-то пропало, ведь я к тебе привязалась.</p>
-      <p>Ты очень хороший и классный, словами не описать. Думаю, мы хорошо понимаем друг друга. Но в какой-то момент я поймала себя на мысли, что ты ведешь себя как парень, хотя мы не пара.</p>
-      <p>И хочу быть честной, ты начинаешь нравиться мне больше, чем просто друг. Я знаю, что тебе страшно, мне самой тоже страшновато. Решила сказать как есть, приму любое твое решение... особенно если это взаимно!</p>
+      <p>Ты очень хороший и классный, словами не описать. Думаю, мы хорошо понимаем друг друга. Но в какой-то момент я поймала себя на мысли, что мы как парочка, хотя это не так.</p>
+      <p>И хочу быть честной, ты начинаешь нравиться мне больше, чем просто друг. Я знаю, что тебе страшно, мне самой тоже страшновато. Но решила сказать как есть, приму любое твое решение... особенно если это взаимно!</p>
     </div>
   </div>
 </section>
@@ -239,7 +238,7 @@
 
       <div class="mutual-result" id="resultNo">
         Ничего страшного<br>
-        <a href="https://t.me/bhndbleyes?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82...%20%D0%BA%20%D1%81%D0%BE%D0%B6%D0%B0%лем%D0%B5%D0%BD%D0%B8%D1%8E%2C%20%D0%BD%D0%B5%20%D0%B2%D0%B7%D0%B0%D0%B8%D0%BC%D0%BD%D0%BE" target="_blank" rel="noopener">Сообщить мне →</a>
+        <a href="https://t.me/bhndbleyes?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82...%20%D0%BA%20%D1%81%D0%BE%D0%B6%D0%B0%D0%BB%D0%B5%D0%BD%D0%B8%D1%8E%2C%20%D0%BD%D0%B5%20%D0%B2%D0%B7%D0%B0%D0%B8%D0%BC%D0%BD%D0%BE" target="_blank" rel="noopener">Сообщить мне →</a>
       </div>
     </div>
   </div>
@@ -247,7 +246,6 @@
 
 </main>
 
-<!-- Скрипты шаблона -->
 <script src="js/data.js"></script>
 <script src="js/contours.js"></script>
 <script src="js/track.js"></script>
@@ -286,7 +284,6 @@
         resultYes.style.display = 'block';
       });
 
-      // Мягкое и плавное убегание кнопки "Нет"
       noBtn.addEventListener('mouseover', () => {
         const x = (Math.random() - 0.5) * 90;
         const y = (Math.random() - 0.5) * 45;
