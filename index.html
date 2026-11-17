@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Сообщение для тебя</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
 <meta name="description" content="Кое-что важное специально для тебя." />
 <meta property="og:title" content="Сообщение для тебя" />
 <meta property="og:image" content="assets/works/work0.jpg" />
@@ -17,6 +18,9 @@
   .backdrop {
     background: #ffffff !important;
   }
+  .trk, canvas#trackCanvas {
+    display: none !important;
+  }
 
   /* "for you." ближе друг к другу */
   .lay--shutter {
@@ -28,7 +32,7 @@
     top: 45% !important;
   }
 
-  /* Признание — уменьшаем отступ и размер, чтобы весь текст влезал целиком */
+  /* Блок признания */
   .lay--abouth {
     top: 16% !important;
   }
@@ -43,7 +47,7 @@
     margin-top: 0.7em !important;
   }
 
-  /* Фотографии в блоке признания */
+  /* Исправленные фотографии: теперь они не обрезаются и выглядят красиво */
   .confession-photos {
     position: absolute;
     inset: 0;
@@ -52,25 +56,28 @@
   }
   .confession-photo {
     position: absolute;
-    width: 190px;
-    height: 240px;
-    object-fit: cover;
-    border-radius: 4px;
-    border: 1.5px solid #000;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    width: 170px;
+    height: auto;
+    max-height: 260px;
+    object-fit: contain;
+    border-radius: 6px;
+    background: #fff;
+    padding: 6px;
+    border: 1px solid rgba(0,0,0,0.15);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
   }
   .confession-photo--1 {
-    top: 14%;
-    left: 5%;
-    transform: rotate(-7deg);
+    top: 12%;
+    left: 6%;
+    transform: rotate(-6deg);
   }
   .confession-photo--2 {
-    bottom: 14%;
-    right: 5%;
-    transform: rotate(7deg);
+    bottom: 12%;
+    right: 6%;
+    transform: rotate(6deg);
   }
 
-  /* Кнопки ответа */
+  /* Кнопки */
   .mutual-wrap {
     margin-top: 1.5rem;
     display: flex;
@@ -97,7 +104,7 @@
     background: transparent;
     color: #000;
     cursor: pointer;
-    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease;
   }
   .m-btn:hover {
     background: #000;
@@ -105,7 +112,7 @@
   }
   .m-btn--no {
     position: relative;
-    transition: transform 0.15s ease-out;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
   }
   .mutual-result {
     display: none;
@@ -146,8 +153,8 @@
       font-size: 3.5vw !important;
     }
     .confession-photo {
-      width: 95px;
-      height: 125px;
+      width: 100px;
+      max-height: 150px;
     }
     .confession-photo--1 { top: 4%; left: 4%; }
     .confession-photo--2 { bottom: 4%; right: 4%; }
@@ -157,8 +164,8 @@
 <body>
 <div class="backdrop" aria-hidden="true"></div>
 
-<!-- Путь к треку в корне проекта -->
-<audio id="bgMusic" loop preload="auto" src="theme.mp3"></audio>
+<!-- Исправленный путь к музыке (из папки assets/audio/) -->
+<audio id="bgMusic" loop preload="auto" src="assets/audio/theme.mp3"></audio>
 
 <div class="ctl">
   <button class="ctl__b" id="soundToggle" aria-pressed="false">включить трек ♫</button>
@@ -186,6 +193,14 @@
     <canvas id="pspCanvas"></canvas>
     <div class="machine__loading" id="pspLoading"><i class="spin" aria-hidden="true"></i></div>
   </div>
+  <!-- Восстановлен оригинальный блок управления для работы psp.js -->
+  <div class="rail">
+    <span id="pspIndex">01</span><i>/</i><span id="pspTotal">01</span>
+    <button class="rail__open" id="pspOpen" aria-label="Открыть фото">→</button>
+  </div>
+  <div class="keys">
+    <kbd>←</kbd><kbd>→</kbd><span>выбрать</span>
+  </div>
 </section>
 
 <!-- ============ 03 · ПРИЗНАНИЕ ============ -->
@@ -198,10 +213,10 @@
 
     <h2 class="lay lay--abouth" style="z-index: 2;">Кое-что важное</h2>
     <div class="lay lay--bio" style="z-index: 2;">
-      <p>Санжар, ты для меня очень близкий человек, и я правда тебя безумно ценю. Мне так нравится гулять с тобой, и ты умеешь поднимать мне настроение даже в самый ужасный день.</p>
-      <p>Если честно, я уже привыкла к тому, что ты всегда рядом, всегда поддержишь, и мне совсем не хочется, чтобы это куда-то пропало, ведь я к тебе привязалась.</p>
-      <p>Ты очень классный, словами не описать. Думаю, мы хорошо понимаем друг друга. Но в какой-то момент я поймала себя на мысли, что ты ведешь себя со мной как парень, хотя мы не пара.</p>
-      <p>И я хочу быть честной, ты начинаешь нравиться мне больше, чем просто друг. Я знаю, что тебе страшно, мне самой тоже страшновато. Но я решила сказать как есть. Я приму любое твое решение... особенно если это взаимно! ✨</p>
+      <p>Санжар, ты для меня очень близкий человек, и я правда тебя безумно ценю. Мне так нравится гулять с тобой и ты умеешь поднимать мне настроение даже в самый ужасный день.</p>
+      <p>Если честно, уже привыкла к тому, что ты всегда рядом и мне совсем не хочется, чтобы это куда-то пропало, ведь я к тебе привязалась.</p>
+      <p>Ты очень хороший и классный, словами не описать. Думаю, мы хорошо понимаем друг друга. Но в какой-то момент я поймала себя на мысли, что ты ведешь себя как парень, хотя мы не пара.</p>
+      <p>И хочу быть честной, ты начинаешь нравиться мне больше, чем просто друг. Я знаю, что тебе страшно, мне самой тоже страшновато. Решила сказать как есть, приму любое твое решение... особенно если это взаимно!</p>
     </div>
   </div>
 </section>
@@ -218,13 +233,13 @@
       </div>
       
       <div class="mutual-result" id="resultYes">
-        Урааа, я так рада! Это взаимно ✨<br>
+        Урааа, я рада!<br>
         <a href="https://t.me/bhndbleyes?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%AD%D1%82%D0%BE%20%D0%B2%D0%B7%D0%B0%D0%B8%D0%BC%D0%BD%D0%BE%20%E2%9C%A8" target="_blank" rel="noopener">Написать мне в ТГ →</a>
       </div>
 
       <div class="mutual-result" id="resultNo">
-        Ничего страшного, я всё понимаю 🤍<br>
-        <a href="https://t.me/bhndbleyes?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82...%20%D0%BA%20%D1%81%D0%BE%D0%B6%D0%B0%D0%BB%D0%B5%D0%BD%D0%B8%D1%8E%2C%20%D0%BD%D0%B5%20%D0%B2%D0%B7%D0%B0%D0%B8%D0%BC%D0%BD%D0%BE" target="_blank" rel="noopener">Сообщить мне →</a>
+        Ничего страшного<br>
+        <a href="https://t.me/bhndbleyes?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82...%20%D0%BA%20%D1%81%D0%BE%D0%B6%D0%B0%лем%D0%B5%D0%BD%D0%B8%D1%8E%2C%20%D0%BD%D0%B5%20%D0%B2%D0%B7%D0%B0%D0%B8%D0%BC%D0%BD%D0%BE" target="_blank" rel="noopener">Сообщить мне →</a>
       </div>
     </div>
   </div>
@@ -232,7 +247,7 @@
 
 </main>
 
-<!-- Скрипты шаблона для 3D PSP, галереи и анимаций -->
+<!-- Скрипты шаблона -->
 <script src="js/data.js"></script>
 <script src="js/contours.js"></script>
 <script src="js/track.js"></script>
@@ -271,9 +286,10 @@
         resultYes.style.display = 'block';
       });
 
+      // Мягкое и плавное убегание кнопки "Нет"
       noBtn.addEventListener('mouseover', () => {
-        const x = (Math.random() - 0.5) * 180;
-        const y = (Math.random() - 0.5) * 90;
+        const x = (Math.random() - 0.5) * 90;
+        const y = (Math.random() - 0.5) * 45;
         noBtn.style.transform = `translate(${x}px, ${y}px)`;
       });
 
