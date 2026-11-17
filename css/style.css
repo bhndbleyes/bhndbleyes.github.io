@@ -324,3 +324,14 @@ kbd{font-family:var(--f-vcr);font-size:.8rem;border:1px solid currentColor;opaci
   [data-rise]{opacity:1;transform:none;filter:none;transition:none}
   .lay--icons img,.rail__open,.ctl__b::after{transition:none}
 }
+
+/* Принудительное отключение зависшего прелоадера */
+.boot, .boot.is-done {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  display: none !important;
+}
+body.is-booting {
+  overflow: auto !important;
+}
