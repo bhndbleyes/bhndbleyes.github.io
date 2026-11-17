@@ -335,3 +335,14 @@ kbd{font-family:var(--f-vcr);font-size:.8rem;border:1px solid currentColor;opaci
 body.is-booting {
   overflow: auto !important;
 }
+
+/* Принудительный показ всех секций и контента */
+.rev, [data-rise], .ctl {
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  transform: none !important;
+}
+body {
+  overflow: auto !important;
+}
