@@ -192,21 +192,21 @@
   <a class="cue" href="#work" data-nav aria-label="Листать дальше"><i></i></a>
 </section>
 
-<!-- ============ 02 · 3D ЭКРАН PSP С ФОТОГРАФИЯМИ ============ -->
-<section class="sec sec--light machine" id="work">
-  <div class="stage" aria-hidden="true">
-    <img src="assets/el/flower.png" alt="" class="el el--flower" />
+<!-- ============ 02 · 3D ЭКРАН PSP С ФбееееезОТОГРАФИЯМИ ============ -->
+<section class="machine" style="display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 4vw; width: 100%; height: 100vh;">
+  <!-- Левая часть: твой пиксельный цветок или анимация, которая уже есть -->
+  <div class="machine__stage" style="flex: 1; display: flex; justify-content: center; align-items: center;">
+    <canvas id="pspCanvas" style="max-width: 100%; height: auto;"></canvas>
   </div>
-  <div class="machine__stage">
-    <canvas id="pspCanvas"></canvas>
-    <div class="machine__loading" id="pspLoading"><i class="spin" aria-hidden="true"></i></div>
-  </div>
-  <div class="rail" style="mix-blend-mode: difference; color: #fff;">
-    <span id="pspIndex">01</span><i>/</i><span id="pspTotal">01</span>
-    <button class="rail__open" id="pspOpen" aria-label="Открыть фото">→</button>
-  </div>
-  <div class="keys">
-    <kbd>→</kbd><kbd>←</kbd><span>листать</span>
+
+  <!-- Правая часть: ваша совместная фотография -->
+  <div class="photo-container" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <div style="background: rgba(255, 255, 255, 0.05); padding: 12px; border: 1px solid rgba(230, 242, 252, 0.2); border-radius: 8px; backdrop-filter: blur(10px);">
+      <img src="assets/works/work0.jpg" alt="Для тебя" style="max-width: min(35vw, 420px); height: auto; border-radius: 4px; display: block;" />
+      <div style="margin-top: 10px; font-family: 'VT323', monospace; font-size: 1.3rem; color: #7fe3ff; text-align: center; letter-spacing: 0.05em;">
+        Самый особенный момент ✨
+      </div>
+    </div>
   </div>
 </section>
 
