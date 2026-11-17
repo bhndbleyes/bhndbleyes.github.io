@@ -1,46 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>shutter kif.</title>
-<meta name="description" content="Ahnaf Akif — filmmaker, visual storyteller and educator based in Dhaka, Bangladesh." />
-<meta property="og:title" content="shutter kif." />
+<title>Сообщение для тебя</title>
+<meta name="description" content="Кое-что важное специально для тебя." />
+<meta property="og:title" content="Сообщение для тебя" />
 <meta property="og:image" content="assets/works/work0.jpg" />
 <meta name="theme-color" content="#ffffff" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fff'/%3E%3Ctext x='16' y='23' font-family='Helvetica,Arial' font-size='20' font-style='italic' text-anchor='middle' fill='%23000'%3Ek%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fff'/%3E%3Ctext x='16' y='23' font-family='Helvetica,Arial' font-size='20' font-style='italic' text-anchor='middle' fill='%23000'%3E♥%3C/text%3E%3C/svg%3E" />
 <link rel="stylesheet" href="css/style.css" />
+<style>
+  .mutual-wrap {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    z-index: 10;
+    position: relative;
+  }
+  .mutual-btns {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+  }
+  .m-btn {
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border: 1px solid currentColor;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    transition: transform 0.25s ease, background 0.2s ease, color 0.2s ease, opacity 0.25s ease;
+  }
+  .m-btn--yes:hover {
+    background: #fff;
+    color: #000;
+  }
+  .m-btn--no {
+    position: relative;
+    transition: transform 0.15s ease-out;
+  }
+  .mutual-result {
+    display: none;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    animation: fadeIn 0.5s ease forwards;
+  }
+  .mutual-result a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 24px;
+    border: 1px solid currentColor;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: transparent;
+    color: inherit;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .mutual-result a:hover {
+    background: #fff;
+    color: #000;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Стили для двух фотографий в блоке признания */
+  .confession-photos {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .confession-photo {
+    position: absolute;
+    width: 140px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .confession-photo--1 {
+    top: 15%;
+    left: 8%;
+    transform: rotate(-6deg);
+  }
+  .confession-photo--2 {
+    bottom: 15%;
+    right: 8%;
+    transform: rotate(6deg);
+  }
+  @media(max-width: 768px) {
+    .confession-photo {
+      width: 90px;
+      height: 120px;
+    }
+    .confession-photo--1 { top: 8%; left: 5%; }
+    .confession-photo--2 { bottom: 8%; right: 5%; }
+  }
+</style>
 </head>
 <body class="is-booting">
 
 <div class="backdrop" aria-hidden="true"></div>
 
+<!-- Прелоадер без текста swag -->
 <div id="boot" class="boot" role="status" aria-label="Loading">
-  <img src="assets/el/swag.png" alt="" class="boot__img" />
   <div class="boot__bar"><span id="bootFill"></span></div>
   <div class="boot__pct" id="bootPct">000</div>
 </div>
 
 <div class="ctl">
   <button class="ctl__b" id="invertToggle" aria-pressed="false">invert</button>
-  <button class="ctl__b" id="soundToggle" aria-pressed="false">music on/off</button>
+  <button class="ctl__b" id="soundToggle" aria-pressed="false">включить трек ♫</button>
 </div>
 
 <main id="top">
 
-<!-- ============ 01 · FRONT ============ -->
+<!-- ============ 01 · ГЛАВНЫЙ ЭКРАН ============ -->
 <section class="sec sec--dark hero" id="hero">
   <div class="stage" data-rise>
     <img src="assets/el/star-a.png" alt="" class="el el--star-a" aria-hidden="true" />
     <img src="assets/el/star-b.png" alt="" class="el el--star-b" aria-hidden="true" />
-    <img src="assets/el/dice.png" alt="" class="el el--dice" aria-hidden="true" />
-    <h1 class="lay lay--shutter">shutter</h1>
-    <p class="lay lay--kif" aria-hidden="true">kif.</p>
+    <h1 class="lay lay--shutter">for</h1>
+    <p class="lay lay--kif" aria-hidden="true">you.</p>
   </div>
-  <a class="cue" href="#work" data-nav aria-label="Scroll to work"><i></i></a>
+  <a class="cue" href="#work" data-nav aria-label="Листать дальше"><i></i></a>
 </section>
 
-<!-- ============ 02 · WORK ============ -->
+<!-- ============ 02 · 3D ЭКРАН С ФОТОГРАФИЕЙ ============ -->
 <section class="sec sec--dark machine" id="work">
   <div class="stage" aria-hidden="true">
     <img src="assets/el/flower.png" alt="" class="el el--flower" />
@@ -49,59 +151,49 @@
     <canvas id="pspCanvas"></canvas>
     <div class="machine__loading" id="pspLoading"><i class="spin" aria-hidden="true"></i></div>
   </div>
-  <div class="rail" id="rail" aria-live="polite">
-    <b id="railIdx">01</b><i id="railTot">/09</i>
-    <a class="rail__open" id="railOpen" href="#" target="_blank" rel="noopener" aria-label="Open this post">↗</a>
-  </div>
-  <div class="keys" aria-hidden="true"><kbd>←</kbd><kbd>→</kbd><kbd>✕</kbd></div>
 </section>
 
-<!-- ============ 03 · ABOUT ============ -->
+<!-- ============ 03 · ПРИЗНАНИЕ ============ -->
 <section class="sec sec--dark about" id="about">
-  <div class="stage">
-    <img src="assets/el/cd-a.png" alt="" class="el el--cd-a" aria-hidden="true" />
-    <img src="assets/el/cd-b.png" alt="" class="el el--cd-b" aria-hidden="true" />
-    <h2 class="lay lay--abouth">About me</h2>
-    <div class="lay lay--bio">
-      <p>I'm Ahnaf Akif — a filmmaker, visual storyteller, and educator based in Dhaka, Bangladesh.</p>
-      <p>What started as a curiosity for the camera grew into a career spanning photography, videography, and social media content creation, accumulating quite a lot of views across projects. That foundation sharpened my eye for visual storytelling — and today, I channel it into short narrative films, music videos, and commercial productions where craft and intention drive every frame.</p>
+  <div class="stage" style="position: relative;">
+    <!-- Твои фотографии вместо дисков -->
+    <div class="confession-photos" aria-hidden="true">
+      <img src="assets/el/cd-a.jpg" alt="" class="confession-photo confession-photo--1" />
+      <img src="assets/el/cd-b.jpg" alt="" class="confession-photo confession-photo--2" />
+    </div>
+
+    <h2 class="lay lay--abouth" style="z-index: 2;">Кое-что важное</h2>
+    <div class="lay lay--bio" style="z-index: 2; position: relative;">
+      <p>Санжар, ты для меня очень близкий человек, и я правда тебя безумно ценю. Мне так нравится гулять с тобой, и ты умеешь поднимать мне настроение даже в самый ужасный день.</p>
+      <p>Если честно, я уже привыкла к тому, что ты всегда рядом, всегда поддержишь, и мне совсем не хочется, чтобы это куда-то пропало, ведь я к тебе привязалась.</p>
+      <p>Ты очень классный, словами не описать. Думаю, мы хорошо понимаем друг друга. Но в какой-то момент я поймала себя на мысли, что ты ведешь себя со мной как парень, хотя мы не пара.</p>
+      <p>И я хочу быть честной, ты начинаешь нравиться мне больше, чем просто друг. Я знаю, что тебе страшно, мне самой тоже страшновато. Но я решила сказать как есть. Я приму любое твое решение... особенно если это взаимно! ✨</p>
     </div>
   </div>
 </section>
 
-<!-- ============ 04 · CONTACT ============ -->
+<!-- ============ 04 · ВОПРОС ============ -->
 <section class="sec sec--dark contact" id="contact">
-  <div class="stage">
-    <img src="assets/el/cards.png" alt="" class="el el--cards" aria-hidden="true" />
-    <h2 class="lay lay--contact">contact</h2>
-    <p class="lay lay--me" aria-hidden="true">me.</p>
-    <div class="lay lay--icons">
-      <a href="mailto:shutterkif@gmail.com" aria-label="Email shutterkif@gmail.com">
-        <img src="assets/el/ic-mail.png" alt="" />
-      </a>
-      <a href="https://www.instagram.com/shutterkif/" target="_blank" rel="noopener" aria-label="Instagram @shutterkif">
-        <img src="assets/el/ic-ig.png" alt="" class="icons__ig" />
-      </a>
+  <div class="stage" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%;">
+    <h2 style="font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 300; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; text-align: center;">это взаимно?</h2>
+    
+    <div class="mutual-wrap">
+      <div class="mutual-btns" id="btnGroup">
+        <button class="m-btn m-btn--yes" id="yesBtn">Да</button>
+        <button class="m-btn m-btn--no" id="noBtn">Нет</button>
+      </div>
+      
+      <!-- Результат при нажатии ДА -->
+      <div class="mutual-result" id="resultYes">
+        Урааа, я рада! ✨<br>
+        <a href="https://t.me/bhndbleyes?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%2!%20%D0%AD%D1%82%D0%BE%20%D0%B2%D0%B7%D0%B0%D0%B8%D0%BC%D0%BD%D0%BE%20%E2%9C%A8" target="_blank" rel="noopener">Написать мне в ТГ →</a>
+      </div>
+
+      <!-- Результат при повторном нажатии НЕТ -->
+      <div class="mutual-result" id="resultNo">
+        Ничего страшного<br>
+        <a href="https://t.me/bhndbleyes?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%2...%20%D0%BA%20%D1%81%D0%BE%D0%B6%D0%B0%D0%BB%D0%B5%D0%BD%D0%B8%D1%8E%2C%20%D0%BD%D0%B5%D1%2" target="_blank" rel="noopener">Сообщить мне →</a>
+      </div>
     </div>
   </div>
 </section>
-
-</main>
-
-<!-- preload=auto, not none: the track is set rolling muted from the first frame,
-     so it is buffered and ready to be unmuted the instant the visitor clicks -->
-<audio id="bgAudio" src="assets/audio/theme.mp3" loop preload="auto" playsinline></audio>
-
-<script type="importmap">
-{ "imports": {
-    "three": "https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js",
-    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/"
-} }
-</script>
-<script src="js/data.js"></script>
-<script src="js/contours.js"></script>
-<script src="js/main.js"></script>
-<script src="js/track.js"></script>
-<script type="module" src="js/psp.js"></script>
-</body>
-</html>
