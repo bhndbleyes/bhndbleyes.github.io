@@ -85,7 +85,7 @@
     transform: rotate(6deg);
   }
 
-  /* Кнопки */
+  /* Кнопки: Да слева, Нет справа */
   .mutual-wrap {
     margin-top: 1.5rem;
     display: flex;
@@ -97,10 +97,10 @@
   }
   .mutual-btns {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
     align-items: center;
     justify-content: center;
-    min-height: 60px;
+    min-height: 70px;
   }
   .m-btn {
     padding: 12px 32px;
@@ -112,16 +112,25 @@
     background: transparent;
     color: #000;
     cursor: pointer;
-    transition: background 0.2s ease, color 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
   }
   .m-btn:hover {
     background: #000;
     color: #fff;
   }
+  .m-btn--yes {
+    position: relative;
+    z-index: 2;
+  }
+  .m-btn--yes:hover {
+    transform: scale(1.12);
+  }
   .m-btn--no {
     position: relative;
-    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 2;
+    transition: transform 0.15s ease-out;
   }
+
   .mutual-result {
     display: none;
     text-align: center;
@@ -186,23 +195,25 @@
     <img src="assets/el/star-a.png" alt="" class="el el--star-a" aria-hidden="true" />
     <img src="assets/el/star-b.png" alt="" class="el el--star-b" aria-hidden="true" />
     <h1 class="lay lay--shutter">for</h1>
-    <!-- Убрана точка у you -->
     <p class="lay lay--kif" aria-hidden="true">you</p>
   </div>
   <a class="cue" href="#work" data-nav aria-label="Листать дальше"><i></i></a>
 </section>
 
-<!-- ============ 02 · 3D ЭКРАН PSP С ФбееееезОТОГРАФИЯМИ ============ -->
-<section class="machine" style="display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 6vw; width: 100%; height: 100vh;">
-  <!-- Левая часть: пиксельный цветок (контейнер анимации, который был изначально) -->
-  <div class="machine__stage" style="flex: 1; display: flex; justify-content: center; align-items: center; position: relative;">
-    <canvas id="pspCanvas" style="width: 100%; height: 100%; display: block;"></canvas>
+<!-- ============ 02 · ЭКРАН С ЦВЕТКОМ И ФОТОГРАФИЕЙ ============ -->
+<section class="machine" style="display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 8vw; width: 100%; height: 100vh;" id="work">
+  <!-- Левая часть: пиксельный цветок -->
+  <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
+    <img src="assets/el/flower.png" alt="Flower" style="max-width: min(38vw, 440px); height: auto; display: block; image-rendering: pixelated;" />
   </div>
 
-  <!-- Правая часть: только фотография без лишних надписей -->
-  <div class="photo-container" style="flex: 1; display: flex; align-items: center; justify-content: center;">
-    <div style="background: rgba(255, 255, 255, 0.05); padding: 10px; border: 1px solid rgba(230, 242, 252, 0.2); border-radius: 6px; backdrop-filter: blur(10px);">
+  <!-- Правая часть: фотография и розовая подпись :) -->
+  <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <div style="background: rgba(255, 255, 255, 0.05); padding: 10px; border: 1px solid rgba(255, 112, 166, 0.3); border-radius: 6px; backdrop-filter: blur(10px);">
       <img src="assets/works/work0.jpg" alt="Для тебя" style="max-width: min(34vw, 400px); height: auto; border-radius: 4px; display: block;" />
+    </div>
+    <div style="margin-top: 14px; font-family: 'VT323', monospace; font-size: 1.6rem; color: #ff70a6; text-align: center; letter-spacing: 0.1em; text-shadow: 0 0 10px rgba(255, 112, 166, 0.4);">
+      :)
     </div>
   </div>
 </section>
@@ -254,8 +265,21 @@
 <script src="js/data.js"></script>
 <script src="js/contours.js"></script>
 <script src="js/track.js"></script>
-<script type="module" src="js/psp.js"></script>
 <script src="js/main.js"></script>
+
+<style>
+  /* Фиксируем аккуратный контейнер, чтобы кнопки не налетали друг на друга */
+  .mutual-btns {
+    display: flex;
+    gap: 3rem !important; /* Увеличили расстояние между кнопками */
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .m-btn--no {
+    transition: transform 0.12s ease-out !important; /* Быстрый и плавный отскок */
+  }
+</style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
@@ -289,9 +313,10 @@
         resultYes.style.display = 'block';
       });
 
-      noBtn.addEventListener('mouseover', () => {
-        const x = (Math.random() - 0.5) * 90;
-        const y = (Math.random() - 0.5) * 45;
+      // Увеличили амплитуду и сделали отскок бодрее, но оставили нажимаемым
+      noBtn.addEventListener('mouseenter', () => {
+        const x = (Math.random() - 0.3) * 160; // смещение в безопасную сторону
+        const y = (Math.random() - 0.5) * 90;
         noBtn.style.transform = `translate(${x}px, ${y}px)`;
       });
 
@@ -302,5 +327,6 @@
     }
   });
 </script>
+
 </body>
 </html>
